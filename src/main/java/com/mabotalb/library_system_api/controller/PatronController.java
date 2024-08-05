@@ -46,7 +46,7 @@ public class PatronController {
             @PathVariable @Positive Long id,
             @Valid @RequestBody Patron patronDetails) {
         Patron updatedPatron = patronService.updatePatron(id, patronDetails);
-        ApiResponse<Patron> response = new ApiResponse<>("Patron added successfully!", updatedPatron);
+        ApiResponse<Patron> response = new ApiResponse<>("Patron updated successfully!", updatedPatron);
         return ResponseEntity.ok(response);
     }
 
