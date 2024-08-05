@@ -2,9 +2,11 @@ package com.mabotalb.library_system_api.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.NoArgsConstructor;
 import lombok.Data;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "patrons")
 public class Patron {
@@ -23,4 +25,9 @@ public class Patron {
     @Email(message = "Contact information must be a valid email address")
     @Column(name = "contact_information", unique = true)
     private String contactInformation;
+
+    public Patron(String name, String contactInformation) {
+        this.setName(name);
+        this.setContactInformation(contactInformation);
+    }
 }
