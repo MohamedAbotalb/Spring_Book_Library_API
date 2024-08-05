@@ -4,9 +4,11 @@ import java.time.LocalDate;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.NoArgsConstructor;
 import lombok.Data;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "borrowing_records")
 public class BorrowingRecord {
@@ -30,4 +32,11 @@ public class BorrowingRecord {
 
     @Column(name = "return_date")
     private LocalDate returnDate;
+
+    public BorrowingRecord(Book book, Patron patron) {
+        this.setBook(book);
+        this.setPatron(patron);
+        this.setBorrowingDate(LocalDate.now());
+        this.setReturnDate(null);
+    }
 }
