@@ -38,11 +38,7 @@ public class BorrowingRecordImplementation implements BorrowingRecordService {
         book.setBorrowed(true);
         bookService.updateBook(bookId, book);
 
-        BorrowingRecord record = new BorrowingRecord();
-        record.setBook(book);
-        record.setPatron(patron);
-        record.setBorrowingDate(LocalDate.now());
-
+        BorrowingRecord record = new BorrowingRecord(book, patron);
         return borrowingRecordRepository.save(record);
     }
 
