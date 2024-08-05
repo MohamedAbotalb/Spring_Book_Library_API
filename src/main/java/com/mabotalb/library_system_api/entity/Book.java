@@ -2,9 +2,11 @@ package com.mabotalb.library_system_api.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.NoArgsConstructor;
 import lombok.Data;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "books")
 public class Book {
@@ -37,4 +39,11 @@ public class Book {
 
     @Column(name = "is_borrowed")
     private boolean isBorrowed = false;
+
+    public Book(String isbn, String title, String author, int publicationYear) {
+        this.setIsbn(isbn);
+        this.setAuthor(author);
+        this.setTitle(title);
+        this.setPublicationYear(publicationYear);
+    }
 }
